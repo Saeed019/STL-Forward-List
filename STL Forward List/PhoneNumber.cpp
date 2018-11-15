@@ -19,32 +19,43 @@ PhoneNumber::~PhoneNumber()
 void PhoneNumber::add_phone_number(string mobileNumber, string numberOperator)
 {
 	NumberInfo  number(mobileNumber, numberOperator);
-	if (numberList.size() == 15)
+	if (get_length() == 15)
 	{
 		cout << "Already have 15 numbers!" << endl;
 	}
 	else
 	{
-		numberList.push_back(number);
+		numberList.push_front(number);
 	}
 }
 
 void PhoneNumber::remove_phone_number(string mobileNumber)
 {
-	NumberInfo  number(mobileNumber, "");
-	if (numberList.size() == 1)
+	if (get_length() == 1)
 	{
 		numberList.clear();
 	}
 	else
 	{
-		for (auto it = numberList.begin();it != numberList.end();it++)
+		auto it = numberList.begin();
+		if (it->get_mobile_number().compare(mobileNumber) == 0)
 		{
-			if (it->get_mobile_number().compare(mobileNumber)==0)
+			numberList.pop_front();
+		}
+		else
+		{
+			auto tempIt = numberList.begin();
+
+			for (it = it++; it != numberList.end();it++)
 			{
-				it = numberList.erase(it);
+				if (it->get_mobile_number().compare(mobileNumber) == 0)
+				{
+					tempIt = numberList.erase_after(tempIt);
+					break;
+				}
 			}
 		}
+
 	}
 }
 
@@ -77,7 +88,12 @@ bool PhoneNumber::change_operator(string mobileNumber, string newOperator)
 
 int PhoneNumber::get_length()
 {
-	return numberList.size();
+	int length = 0;
+	for (auto it = numberList.begin();it != numberList.end();it++)
+	{
+		length++;
+	}
+	return length;
 }
 
 void PhoneNumber::print()

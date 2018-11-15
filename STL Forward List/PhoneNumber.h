@@ -1,7 +1,7 @@
 #pragma once
 #include<string>
 #include<iostream>
-#include<list>
+#include<forward_list>
 #include "NumberInfo.h"
 using namespace std;
 
@@ -18,6 +18,6 @@ public:
 	int get_length();
 	void print();
 private:
-	list<NumberInfo> numberList;
+	forward_list<NumberInfo> numberList;
 };
 

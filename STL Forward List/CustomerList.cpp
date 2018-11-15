@@ -61,7 +61,7 @@ void CustomerList::insert_customer(string name, string fatherName, string mother
 		{
 			if (!search_mobile(mobileNumber))
 			{
-				customerList.push_back(customer);
+				customerList.push_front(customer);
 			}
 			else
 				cout << "This Mobile Number is already Resistered." << endl;
@@ -103,12 +103,22 @@ void CustomerList::insert_mobile_number(string nationalId, string mobileNumber,s
 
 void CustomerList::delete_customer(string nId)
 {
-	for (auto it = customerList.begin();it != customerList.end();it++)
+	auto it = customerList.begin();
+	if (it->get_national_id().compare(nId) == 0)
 	{
-		if (it->get_national_id().compare(nId) == 0)
+		customerList.pop_front();
+	}
+	else
+	{
+		auto tempIt = customerList.begin();
+
+		for (it = it++; it != customerList.end();it++)
 		{
-			it = customerList.erase(it);
-			break;
+			if (it->get_national_id().compare(nId) == 0)
+			{
+				tempIt = customerList.erase_after(tempIt);
+				break;
+			}
 		}
 	}
 

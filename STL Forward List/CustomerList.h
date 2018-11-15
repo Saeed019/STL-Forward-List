@@ -1,5 +1,5 @@
 #pragma once
-#include<list>
+#include<forward_list>
 #include "CustomerData.h"
 
 class CustomerList
@@ -17,6 +17,6 @@ public:
 	void change_operator(string, string);
 	void print();
 private:
-	list<CustomerData> customerList;
+	forward_list<CustomerData> customerList;
 };
 
