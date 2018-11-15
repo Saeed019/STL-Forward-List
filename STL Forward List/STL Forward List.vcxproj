@@ -115,6 +115,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CustomerData.cpp" />
+    <ClCompile Include="CustomerList.cpp" />
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="NumberInfo.cpp" />
+    <ClCompile Include="Person.cpp" />
+    <ClCompile Include="PhoneNumber.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="CustomerData.h" />
+    <ClInclude Include="CustomerList.h" />
+    <ClInclude Include="NumberInfo.h" />
+    <ClInclude Include="Person.h" />
+    <ClInclude Include="PhoneNumber.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
